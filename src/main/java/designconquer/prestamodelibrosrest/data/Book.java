@@ -13,7 +13,7 @@ import org.springframework.data.relational.core.mapping.Table;
 import java.util.Set;
 
 @Data
-@Table("Book")
+@Table("book")
 @NoArgsConstructor
 @AllArgsConstructor
 

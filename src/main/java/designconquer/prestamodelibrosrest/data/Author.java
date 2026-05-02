@@ -9,7 +9,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table("Author")
+@Table("author")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Author {

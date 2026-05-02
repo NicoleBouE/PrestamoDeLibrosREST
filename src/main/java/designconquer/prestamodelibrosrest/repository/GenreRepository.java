@@ -8,5 +8,5 @@ import java.util.List;
 public interface GenreRepository extends ListCrudRepository<Genre, Long> {
 
     Genre findByIdGenre(long id);
-    List<Genre> findAllByNameContainingIgnoreCase(String name);
+    List<Genre> findAllByGenreContainingIgnoreCase(String genre);
 }

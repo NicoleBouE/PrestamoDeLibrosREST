@@ -1,5 +1,11 @@
 package designconquer.prestamodelibrosrest.service;
 
+import designconquer.prestamodelibrosrest.data.Client;
+import designconquer.prestamodelibrosrest.data.Genre;
+import designconquer.prestamodelibrosrest.data.Loan;
+import designconquer.prestamodelibrosrest.data.User;
+import designconquer.prestamodelibrosrest.repository.BookRepository;
+import designconquer.prestamodelibrosrest.repository.ClientRepository;
 import designconquer.prestamodelibrosrest.repository.LoanRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

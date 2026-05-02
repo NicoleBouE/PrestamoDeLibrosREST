@@ -9,4 +9,5 @@ public interface AuthorRepository extends ListCrudRepository<Author, Long> {
 
     Author findByIdAuthor(long id);
     List<Author> findAllByNameContainingIgnoreCase(String name);
+
 }

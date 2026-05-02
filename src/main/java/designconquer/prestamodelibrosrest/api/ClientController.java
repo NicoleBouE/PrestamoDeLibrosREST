@@ -13,13 +13,18 @@ public class ClientController {
    private final ClientService clientService;
 
    public ClientController(ClientService clientService) {
-      this.clientService = clientService;
-    }
+       this.clientService = clientService;
+   }
 
-    @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        Client savedClient = clientService.save(client);
+   @PostMapping
+   public ResponseEntity<Client> createClient(@RequestBody Client client) {
+        Client savedClient = clientService.saveClient(client);
         return new ResponseEntity<>(savedClient, HttpStatus.CREATED);
+   }
+
+    @GetMapping
+    public ResponseEntity<Iterable<Client>> getAllClients() {
+        return ResponseEntity.ok(clientService.getAllClients());
     }
 
     @GetMapping("/{id}")

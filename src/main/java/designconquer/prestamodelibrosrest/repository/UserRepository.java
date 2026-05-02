@@ -8,6 +8,6 @@ import java.util.List;
 public interface UserRepository extends ListCrudRepository<User, Long> {
 
     User findByIdUser(long id);
-    List<User> findAllByNameContainingIgnoreCase(String name);
+    List<User> findAllByUsernameContainingIgnoreCase(String username);
     List<User> findAllByUsernameIgnoreCase(String username);
 }

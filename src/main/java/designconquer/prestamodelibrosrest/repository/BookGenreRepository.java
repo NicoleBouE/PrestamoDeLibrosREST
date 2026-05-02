@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface BookGenreRepository extends ListCrudRepository<BookGenre, Long> {
 
-    BookGenre findByIdBookGenre(long id);
     List<BookGenre> findAllByIdGenre(long id);
     List<BookGenre> findAllByIdBook(long id);
 }

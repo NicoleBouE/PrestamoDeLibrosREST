@@ -9,7 +9,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table("Genre")
+@Table("genre")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Genre {
