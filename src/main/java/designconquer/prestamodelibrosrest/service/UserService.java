@@ -1,7 +1,5 @@
 package designconquer.prestamodelibrosrest.service;
 
-import designconquer.prestamodelibrosrest.data.Client;
-import designconquer.prestamodelibrosrest.data.Genre;
 import designconquer.prestamodelibrosrest.data.User;
 import designconquer.prestamodelibrosrest.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;

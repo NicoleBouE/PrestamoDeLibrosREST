@@ -1,7 +1,6 @@
 package designconquer.prestamodelibrosrest.service;
 
 import designconquer.prestamodelibrosrest.data.Author;
-import designconquer.prestamodelibrosrest.data.Client;
 import designconquer.prestamodelibrosrest.repository.AuthorRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
