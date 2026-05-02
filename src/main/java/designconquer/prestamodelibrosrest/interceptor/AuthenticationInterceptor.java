@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+// Esto implementará en una versión actualizada del proyecto.
+
 @Slf4j
 @Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
