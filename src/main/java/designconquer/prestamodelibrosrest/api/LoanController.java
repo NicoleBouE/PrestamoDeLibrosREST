@@ -38,4 +38,9 @@ public class LoanController {
         return ResponseEntity.ok(updatedLoan);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLoan(@PathVariable Long id) {
+        loanService.deleteLoan(id);
+        return ResponseEntity.noContent().build();
+    }
 }

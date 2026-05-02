@@ -18,13 +18,12 @@ public class User {
     private Long idUser;
 
     @Column("username")
-    @NonNull
     private String username;
+
     @Column("password")
-    @NonNull
     private String password;
+
     @Column("role")
-    @NonNull
     private Role role;
 
     public enum Role {

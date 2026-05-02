@@ -23,24 +23,19 @@ public class Book {
     private Long idBook;
 
     @Column("charge")
-    @NonNull
     private long charge;
 
     @Column("quantity")
-    @NonNull
     private int quantity;
 
     @Column("availability")
-    @NonNull
     private Availability availability;
 
     @Column("title")
-    @NonNull
     private String title;
 
     // Relación con Author
     @Column("idauthor")
-    @NonNull
     private Long idAuthor;
 
     @MappedCollection(idColumn = "idbook")

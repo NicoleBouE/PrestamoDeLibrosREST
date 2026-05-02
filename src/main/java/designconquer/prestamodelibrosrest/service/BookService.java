@@ -1,7 +1,7 @@
 package designconquer.prestamodelibrosrest.service;
 
 import designconquer.prestamodelibrosrest.data.Book;
-import designconquer.prestamodelibrosrest.data.Client;
+import designconquer.prestamodelibrosrest.repository.AuthorRepository;
 import designconquer.prestamodelibrosrest.repository.BookGenreRepository;
 import designconquer.prestamodelibrosrest.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -13,10 +13,12 @@ public class BookService {
 
     private final BookRepository bookRepository;
     private final BookGenreRepository bookGenreRepository;
+    private final AuthorRepository authorRepository;
 
-    public BookService(BookRepository bookRepository, BookGenreRepository bookGenreRepository) {
+    public BookService(BookRepository bookRepository, BookGenreRepository bookGenreRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.bookGenreRepository = bookGenreRepository;
+        this.authorRepository = authorRepository;
     }
 
     public Book saveBook(Book book) {
@@ -49,7 +51,7 @@ public class BookService {
                         org.springframework.http.HttpStatus.NOT_FOUND, "Libro no encontrado con id: " + id));
     }
 
-    public Book bookClient(Long id, Book updatedBook) {
+    public Book updateBook(Long id, Book updatedBook) {
         return bookRepository.findById(id)
                 .map(existingBook -> {
                     if (updatedBook.getCharge() >= 0) {
@@ -58,15 +60,21 @@ public class BookService {
                     if (updatedBook.getQuantity() >= 0) {
                         existingBook.setQuantity(updatedBook.getQuantity());
                     }
-
-
+                    if (updatedBook.getAvailability() != null) {
+                        existingBook.setAvailability(updatedBook.getAvailability());
+                    }
                     if (updatedBook.getTitle() != null && !updatedBook.getTitle().trim().isEmpty()) {
                         existingBook.setTitle(updatedBook.getTitle().trim());
                     }
-
-
+                    if (updatedBook.getIdAuthor() != null && authorRepository.findById(updatedBook.getIdAuthor()).isPresent()) {
+                        existingBook.setIdAuthor(updatedBook.getIdAuthor());
+                    }
                     return bookRepository.save(existingBook);
                 })
                 .orElseThrow(() -> new RuntimeException("Book no encontrado con el id: " + id));
+    }
+
+    public void deleteBook(Long id) {
+        bookRepository.deleteById(id);
     }
 }

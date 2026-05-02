@@ -23,20 +23,16 @@ public class Loan {
     private LocalDate date;
 
     @Column("status")
-    @NonNull
     private Status status;
 
     @Column("charge")
-    @NonNull
     private Long charge;
 
     // Relacion con libro y cliente
     @Column("idbook")
-    @NonNull
     private Long idBook;
 
     @Column("idclient")
-    @NonNull
     private Long idClient;
 
     public enum Status {

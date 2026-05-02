@@ -62,5 +62,7 @@ public class LoanService {
                 .orElseThrow(() -> new RuntimeException("Préstamo no encontrado con el id: " + id));
     }
 
-
+    public void deleteLoan(Long id) {
+        loanRepository.deleteById(id);
+    }
 }

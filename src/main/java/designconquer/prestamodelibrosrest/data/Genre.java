@@ -18,6 +18,5 @@ public class Genre {
     private Long idGenre;
 
     @Column("genre")
-    @NonNull
     private String genre;
 }

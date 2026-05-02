@@ -18,7 +18,5 @@ public class Author {
     private Long idAuthor;
 
     @Column("name")
-    @NonNull
     private String name;
-
 }

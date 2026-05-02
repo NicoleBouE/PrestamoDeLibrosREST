@@ -40,11 +40,16 @@ public class UserService {
                     if (updatedUser.getPassword() != null && !updatedUser.getPassword().trim().isEmpty()) {
                         existingUser.setPassword(updatedUser.getPassword().trim());
                     }
-
-
+                    if (updatedUser.getRole() != null) {
+                        existingUser.setRole(updatedUser.getRole());
+                    }
 
                     return userRepository.save(existingUser);
                 })
                 .orElseThrow(() -> new RuntimeException("User no encontrado con el id: " + id));
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }

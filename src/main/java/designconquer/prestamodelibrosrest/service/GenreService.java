@@ -41,4 +41,8 @@ public class GenreService {
                 })
                 .orElseThrow(() -> new RuntimeException("Genre no encontrado con el id: " + id));
     }
+
+    public void deleteGenre(Long id) {
+        genreRepository.deleteById(id);
+    }
 }
