@@ -15,13 +15,12 @@ import org.springframework.data.relational.core.mapping.Table;
 
 public class Client {
     @Id
+    @Column("idclient")
     private Long idClient;
 
     @Column("name")
-    @NonNull
     private String name;
 
-    @Column("accountBalance")
-    @NonNull
+    @Column("accountbalance")
     private Long accountBalance;
 }

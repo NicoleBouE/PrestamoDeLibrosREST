@@ -17,6 +17,6 @@ public interface BookRepository extends ListCrudRepository<Book, Long> {
     @Query("SELECT b.* FROM Book b " +
             "JOIN BookGenre bg ON b.idBook = bg.idBook " +
             "JOIN Genre g ON bg.idGenre = g.idGenre " +
-            "WHERE g.name = :genre")
+            "WHERE g.genre = :genre")
     List<Book> findByGenre(@Param("genre") String genre);
 }

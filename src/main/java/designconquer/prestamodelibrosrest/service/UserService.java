@@ -13,4 +13,35 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    public Iterable<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public User getUserById(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
+                        org.springframework.http.HttpStatus.NOT_FOUND, "User no encontrado con id: " + id));
+    }
+
+    public User updateUser(Long id, User updatedUser) {
+        return userRepository.findById(id)
+                .map(existingUser -> {
+                    if (updatedUser.getUsername() != null && !updatedUser.getUsername().trim().isEmpty()) {
+                        existingUser.setUsername(updatedUser.getUsername().trim());
+                    }
+                    if (updatedUser.getPassword() != null && !updatedUser.getPassword().trim().isEmpty()) {
+                        existingUser.setPassword(updatedUser.getPassword().trim());
+                    }
+
+
+
+                    return userRepository.save(existingUser);
+                })
+                .orElseThrow(() -> new RuntimeException("User no encontrado con el id: " + id));
+    }
 }

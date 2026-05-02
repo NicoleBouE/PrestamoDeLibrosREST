@@ -15,7 +15,7 @@ public interface LoanRepository extends ListCrudRepository<Loan, Long> {
     @Query("SELECT Loan.* FROM Loan " +
             "JOIN Client ON Loan.idClient = Client.idClient " +
             "JOIN Book ON Loan.idBook = idBook " +
-            "WHERE Client.nombre LIKE :nombre " +
+            "WHERE Client.name LIKE :name " +
             "AND Book.title LIKE :titulo")
     List<Loan> findByClientOrBook(
             @Param("name") String name,

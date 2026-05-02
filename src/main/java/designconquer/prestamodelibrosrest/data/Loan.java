@@ -16,10 +16,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Loan {
     @Id
+    @Column("idloan")
     private Long idLoan;
 
     @Column("date")
-    @NonNull
     private LocalDate date;
 
     @Column("status")
@@ -31,11 +31,11 @@ public class Loan {
     private Long charge;
 
     // Relacion con libro y cliente
-    @Column("idBook")
+    @Column("idbook")
     @NonNull
     private Long idBook;
 
-    @Column("idClient")
+    @Column("idclient")
     @NonNull
     private Long idClient;
 

@@ -14,6 +14,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @AllArgsConstructor
 public class Genre {
     @Id
+    @Column("idgenre")
     private Long idGenre;
 
     @Column("genre")

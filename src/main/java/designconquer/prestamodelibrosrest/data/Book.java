@@ -19,6 +19,7 @@ import java.util.Set;
 
 public class Book {
     @Id
+    @Column("idbook")
     private Long idBook;
 
     @Column("charge")
@@ -29,7 +30,7 @@ public class Book {
     @NonNull
     private int quantity;
 
-    @Column("status")
+    @Column("availability")
     @NonNull
     private Availability availability;
 
@@ -38,11 +39,11 @@ public class Book {
     private String title;
 
     // Relación con Author
-    @Column("idAuthor")
+    @Column("idauthor")
     @NonNull
     private Long idAuthor;
 
-    @MappedCollection(idColumn = "idBook")
+    @MappedCollection(idColumn = "idbook")
     private Set<BookGenre> genres;
 
     public void addGenre(Long idGenre) {

@@ -7,17 +7,17 @@ import lombok.NonNull;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-@Table("BookGenre")
+@Table("bookgenre")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookGenre {
 
-    @Column("idGenre")
+    @Column("idgenre")
     @NonNull
     private Long idGenre;
 
-    @Column("idBook")
+    @Column("idbook")
     @NonNull
     private Long idBook;
 }

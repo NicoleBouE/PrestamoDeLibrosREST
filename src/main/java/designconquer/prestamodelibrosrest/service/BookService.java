@@ -2,6 +2,7 @@ package designconquer.prestamodelibrosrest.service;
 
 
 import designconquer.prestamodelibrosrest.data.Book;
+import designconquer.prestamodelibrosrest.data.Client;
 import designconquer.prestamodelibrosrest.repository.BookGenreRepository;
 import designconquer.prestamodelibrosrest.repository.BookRepository;
 import lombok.extern.slf4j.Slf4j;

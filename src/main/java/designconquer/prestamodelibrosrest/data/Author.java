@@ -14,6 +14,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @AllArgsConstructor
 public class Author {
     @Id
+    @Column("idauthor")
     private Long idAuthor;
 
     @Column("name")

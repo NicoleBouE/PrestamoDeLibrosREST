@@ -9,11 +9,12 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@Table("DBUser") // DB por Database
+@Table("dbuser") // DB por Database
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
     @Id
+    @Column("iduser")
     private Long idUser;
 
     @Column("username")
