@@ -1,17 +1,18 @@
 package designconquer.prestamodelibrosrest.service;
 
-import designconquer.prestamodelibrosrest.data.Client;
-import designconquer.prestamodelibrosrest.data.Genre;
-import designconquer.prestamodelibrosrest.data.Loan;
-import designconquer.prestamodelibrosrest.data.User;
+import designconquer.prestamodelibrosrest.data.*;
 import designconquer.prestamodelibrosrest.repository.BookRepository;
 import designconquer.prestamodelibrosrest.repository.ClientRepository;
 import designconquer.prestamodelibrosrest.repository.LoanRepository;
+import designconquer.prestamodelibrosrest.service.dto.BookDTO;
+import designconquer.prestamodelibrosrest.service.dto.LoanDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -64,5 +65,28 @@ public class LoanService {
 
     public void deleteLoan(Long id) {
         loanRepository.deleteById(id);
+    }
+
+
+    public LoanDTO getLoanDTO(Long id) {
+        Loan loan = loanRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Préstamo no encontrado"));
+
+        String bookTitle = bookRepository.findById(loan.getIdBook())
+                .map(book -> book.getTitle())
+                .orElse(null);
+
+        String clientName = clientRepository.findById(loan.getIdClient())
+                .map(client -> client.getName())
+                .orElse(null);
+
+        return new LoanDTO(
+                loan.getIdLoan(),
+                loan.getDate(),
+                loan.getStatus(),
+                loan.getCharge(),
+                clientRepository.findById(loan.getIdClient()),
+                bookRepository.findById(loan.getIdBook())
+        );
     }
 }

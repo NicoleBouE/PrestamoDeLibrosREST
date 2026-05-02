@@ -2,6 +2,7 @@ package designconquer.prestamodelibrosrest.api;
 
 import designconquer.prestamodelibrosrest.data.Book;
 import designconquer.prestamodelibrosrest.service.BookService;
+import designconquer.prestamodelibrosrest.service.dto.BookDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +29,9 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+    public ResponseEntity<BookDTO> getBookById(@PathVariable Long id) {
         Book book = bookService.getBookById(id);
-        return ResponseEntity.ok(book);
+        return ResponseEntity.ok(bookService.getBookDTO(id));
     }
 
     @PutMapping("/{id}")
@@ -38,9 +39,16 @@ public class BookController {
         Book updatedBook = bookService.updateBook(id, bookDetails);
         return ResponseEntity.ok(updatedBook);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{idBook}/genres/{idGenre}")
+    public ResponseEntity<BookDTO> addGenreToBook(@PathVariable Long idBook, @PathVariable Long idGenre) {
+        bookService.addGenreToBook(idGenre, idBook);
+        return ResponseEntity.ok(bookService.getBookDTO(idBook));
     }
 }

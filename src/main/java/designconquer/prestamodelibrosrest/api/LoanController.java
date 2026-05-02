@@ -2,6 +2,7 @@ package designconquer.prestamodelibrosrest.api;
 
 import designconquer.prestamodelibrosrest.data.Loan;
 import designconquer.prestamodelibrosrest.service.LoanService;
+import designconquer.prestamodelibrosrest.service.dto.LoanDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +28,9 @@ public class LoanController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Loan> getLoanById(@PathVariable Long id) {
+    public ResponseEntity<LoanDTO> getLoanById(@PathVariable Long id) {
         Loan loan = loanService.getLoanById(id);
-        return ResponseEntity.ok(loan);
+        return ResponseEntity.ok(loanService.getLoanDTO(id));
     }
 
     @PutMapping("/{id}")
