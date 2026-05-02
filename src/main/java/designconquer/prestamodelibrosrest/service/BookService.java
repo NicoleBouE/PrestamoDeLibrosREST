@@ -44,8 +44,7 @@ public class BookService {
 
     public Book getBookById(Long id) {
         return  bookRepository.findById(id)
-                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.NOT_FOUND, "Libro no encontrado con id: " + id));
+                .orElseThrow(() -> new RuntimeException("Book no encontrado con el id: " + id));
     }
 
     public Book updateBook(Long id, Book updatedBook) {
@@ -54,8 +53,12 @@ public class BookService {
                     if (updatedBook.getCharge() >= 0) {
                         existingBook.setCharge(updatedBook.getCharge());
                     }
-                    if (updatedBook.getQuantity() >= 0) {
+                    if (updatedBook.getQuantity() > 0) {
                         existingBook.setQuantity(updatedBook.getQuantity());
+                    }
+                    if (updatedBook.getQuantity() == 0) {
+                        existingBook.setQuantity(0);
+                        existingBook.setAvailability(Book.Availability.UNAVAILABLE);
                     }
                     if (updatedBook.getAvailability() != null) {
                         existingBook.setAvailability(updatedBook.getAvailability());

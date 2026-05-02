@@ -26,8 +26,7 @@ public class AuthorService {
 
     public Author getAuthorById(Long id) {
         return  authorRepository.findById(id)
-                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.NOT_FOUND, "Autor no encontrado con id: " + id));
+                .orElseThrow(() -> new RuntimeException("Author no encontrado con el id: " + id));
     }
 
     public Author updateAuthor(Long id, Author updatedAuthor) {

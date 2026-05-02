@@ -27,8 +27,7 @@ public class UserService {
 
     public User getUserById(Long id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.NOT_FOUND, "User no encontrado con id: " + id));
+                .orElseThrow(() -> new RuntimeException("User no encontrado con el id: " + id));
     }
 
     public User updateUser(Long id, User updatedUser) {

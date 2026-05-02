@@ -30,8 +30,7 @@ public class ClientService {
 
     public Client getClientById(Long id) {
         return  clientRepository.findById(id)
-                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.NOT_FOUND, "Cliente no encontrado con id: " + id));
+                .orElseThrow(() -> new RuntimeException("Client no encontrado con el id: " + id));
     }
 
     public Client updateClient(Long id, Client updatedClient) {

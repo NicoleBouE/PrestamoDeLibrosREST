@@ -27,8 +27,7 @@ public class GenreService {
 
     public Genre getGenreById(Long id) {
         return genreRepository.findById(id)
-                .orElseThrow(() -> new org.springframework.web.server.ResponseStatusException(
-                        org.springframework.http.HttpStatus.NOT_FOUND, "Género no encontrado con id: " + id));
+                .orElseThrow(() -> new RuntimeException("Genre no encontrado con el id: " + id));
     }
 
     public Genre updateGenre(Long id, Genre updatedGenre) {
